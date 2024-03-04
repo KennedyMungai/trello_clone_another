@@ -1,4 +1,6 @@
+import { Button } from '@/components/ui/button'
 import { Medal } from 'lucide-react'
+import Link from 'next/link'
 
 export default function Home() {
 	return (
@@ -20,6 +22,9 @@ export default function Home() {
 				From high rises to the home office, the way your team works is
 				unique - accomplish it all with Trello Clone
 			</div>
+			<Button className='mt-6' size={'lg'} asChild>
+				<Link href={'/sign-up'}>Get Trello Clone for free</Link>
+			</Button>
 		</main>
 	)
 }
