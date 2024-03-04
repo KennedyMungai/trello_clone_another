@@ -1,5 +1,6 @@
 import Logo from '@/components/logo'
 import { Button } from '@/components/ui/button'
+import Link from 'next/link'
 
 type Props = {}
 
@@ -9,8 +10,12 @@ const NavBar = (props: Props) => {
 			<div className='md:max-w-screen-2xl mx-auto flex items-center w-full justify-between'>
 				<Logo />
 				<div className='space-x-4 md:block md:w-auto flex items-center justify-between w-full'>
-					<Button>Login</Button>
-					<Button>Get Trello Clone For Free</Button>
+					<Button size='sm' variant={'outline'} asChild>
+						<Link href={'/sign-in'}>Login</Link>
+					</Button>
+					<Button size={'sm'} asChild>
+						<Link href={'/sign-up'}> Trello Clone For Free</Link>
+					</Button>
 				</div>
 			</div>
 		</nav>
