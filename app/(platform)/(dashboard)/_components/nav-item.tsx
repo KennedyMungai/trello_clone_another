@@ -1,10 +1,16 @@
-"use client"
-import { Organization } from '@clerk/nextjs/server'
+'use client'
+
+export type Organization = {
+	id: string
+	slug: string
+	imageUrl: string
+	name: string
+}
 
 type Props = {
 	isActive: boolean
 	isExpanded: boolean
-	organization: any
+	organization: Organization
 	onExpand: (id: string) => void
 }
 
