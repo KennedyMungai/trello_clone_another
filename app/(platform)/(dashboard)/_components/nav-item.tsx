@@ -37,6 +37,7 @@ const NavItem = ({ isActive, isExpanded, onExpand, organization }: Props) => {
 							className='rounded-sm object-cover'
 						/>
 					</div>
+                    <span className="font-medium text-sm">{organization.name}</span>
 				</div>
 			</AccordionTrigger>
 		</AccordionItem>
