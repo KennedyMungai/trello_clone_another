@@ -1,8 +1,10 @@
-import React from 'react'
+'use client'
 
-type Props = {}
+type Props = {
+	storageKey?: string
+}
 
-const Sidebar = (props: Props) => {
+const Sidebar = ({ storageKey }: Props) => {
 	return <div>Sidebar</div>
 }
 
