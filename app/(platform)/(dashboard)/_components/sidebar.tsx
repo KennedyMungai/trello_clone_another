@@ -7,6 +7,7 @@ import { useOrganization, useOrganizationList } from '@clerk/nextjs'
 import { Plus } from 'lucide-react'
 import Link from 'next/link'
 import { useLocalStorage } from 'usehooks-ts'
+import NavItem from './nav-item'
 
 type Props = {
 	storageKey?: string
