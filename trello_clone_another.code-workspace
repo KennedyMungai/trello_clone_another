@@ -9,7 +9,8 @@
 			"lucide",
 			"nextjs",
 			"trpc",
-			"usehooks"
+			"usehooks",
+			"zustand"
 		]
 	}
 }
