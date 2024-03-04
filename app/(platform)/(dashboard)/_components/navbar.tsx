@@ -1,4 +1,5 @@
 import Logo from '@/components/logo'
+import { Button } from '@/components/ui/button'
 
 type Props = {}
 
@@ -10,6 +11,7 @@ const NavBar = (props: Props) => {
 				<div className='hidden md:flex'>
 					<Logo />
 				</div>
+                <Button size='sm' className='rounded-sm hidden md:block h-auto py-1.5 px-2'>Create</Button>
 			</div>
 		</nav>
 	)
