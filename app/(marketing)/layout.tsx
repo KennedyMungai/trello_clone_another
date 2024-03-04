@@ -5,7 +5,7 @@ type Props = {
 }
 
 const MarketingLayout = ({ children }: Props) => {
-	return <div>{children}</div>
+	return <div className='h-full bg-slate-100'>{children}</div>
 }
 
 export default MarketingLayout
