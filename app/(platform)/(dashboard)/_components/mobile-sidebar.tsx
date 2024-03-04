@@ -36,7 +36,7 @@ const MobileSidebar = (props: Props) => {
 				<Menu className='h-4 w-4' />
 			</Button>
 			<Sheet open={isOpen} onOpenChange={onClose}>
-				<SheetContent className='p-2 pt-10'>
+				<SheetContent className='p-2 pt-10' side={'left'}>
 					<Sidebar storageKey='t-sidebar-mobile-state' />
 				</SheetContent>
 			</Sheet>
