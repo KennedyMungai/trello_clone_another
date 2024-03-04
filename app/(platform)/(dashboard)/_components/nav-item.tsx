@@ -2,6 +2,7 @@
 
 import { AccordionItem, AccordionTrigger } from '@/components/ui/accordion'
 import { cn } from '@/lib/utils'
+import { Activity, Layout, Settings } from 'lucide-react'
 import Image from 'next/image'
 
 export type Organization = {
@@ -19,6 +20,24 @@ type Props = {
 }
 
 const NavItem = ({ isActive, isExpanded, onExpand, organization }: Props) => {
+	const routes = [
+		{
+			label: 'Boards',
+			icon: <Layout className='h-4 w-4 mr-2' />,
+			href: `/organization/${organization.id}`
+		},
+        {
+            label: 'Activity',
+            icon: <Activity className="h-4 w-4 mr-2" />,
+            href: `/organization/${organization.id}/activity`
+        },
+        {
+            label: 'Settings',
+            icon: <Settings className="h-4 w-4 mr-2" />,
+            href: `/organization/${organization.id}/settings`
+        }
+	]
+
 	return (
 		<AccordionItem value={organization.id} className='border-none'>
 			<AccordionTrigger
@@ -37,7 +56,9 @@ const NavItem = ({ isActive, isExpanded, onExpand, organization }: Props) => {
 							className='rounded-sm object-cover'
 						/>
 					</div>
-                    <span className="font-medium text-sm">{organization.name}</span>
+					<span className='font-medium text-sm'>
+						{organization.name}
+					</span>
 				</div>
 			</AccordionTrigger>
 		</AccordionItem>
