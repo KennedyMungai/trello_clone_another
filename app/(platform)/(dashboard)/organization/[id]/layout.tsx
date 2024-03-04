@@ -1,7 +1,17 @@
-type Props = {}
+import { ReactNode } from 'react'
+import OrgControl from './_components/OrgControl'
 
-const SingleOrganizationLayout = (props: Props) => {
-	return <div>SingleOrganizationLayout</div>
+type Props = {
+	children: ReactNode
+}
+
+const SingleOrganizationLayout = ({ children }: Props) => {
+	return (
+		<>
+			<OrgControl />
+			{children}
+		</>
+	)
 }
 
 export default SingleOrganizationLayout
