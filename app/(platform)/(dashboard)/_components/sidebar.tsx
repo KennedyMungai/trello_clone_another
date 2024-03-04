@@ -1,5 +1,6 @@
 'use client'
 
+import { Accordion } from '@/components/ui/accordion'
 import { Button } from '@/components/ui/button'
 import { Skeleton } from '@/components/ui/skeleton'
 import { useOrganization, useOrganizationList } from '@clerk/nextjs'
@@ -65,6 +66,15 @@ const Sidebar = ({ storageKey = 't-sidebar-state' }: Props) => {
 					</Link>
 				</Button>
 			</div>
+			<Accordion
+				type='multiple'
+				defaultValue={defaultAccordionValue}
+				className='space-y-2'
+			>
+				{userMemberships.data.map(({ organization }) => (
+					<p key={organization.id}>{organization.name}</p>
+				))}
+			</Accordion>
 		</>
 	)
 }
