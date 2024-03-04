@@ -7,6 +7,7 @@ const SelectOrganization = (props: Props) => {
 		<OrganizationList
 			hidePersonal
 			afterSelectOrganizationUrl={'/organization/:id'}
+            afterCreateOrganizationUrl={'/organization/:id'}
 		/>
 	)
 }
