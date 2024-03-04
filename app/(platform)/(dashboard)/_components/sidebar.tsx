@@ -72,7 +72,13 @@ const Sidebar = ({ storageKey = 't-sidebar-state' }: Props) => {
 				className='space-y-2'
 			>
 				{userMemberships.data.map(({ organization }) => (
-					<p key={organization.id}>{organization.name}</p>
+					<NavItem
+						key={organization.id}
+						isActive={organization.id === activeOrganization?.id}
+						isExpanded={expanded[organization.id]}
+                        organization={organization}
+                        onExpand={onExpand}
+					/>
 				))}
 			</Accordion>
 		</>
