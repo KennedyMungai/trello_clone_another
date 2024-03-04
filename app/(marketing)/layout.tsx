@@ -2,6 +2,7 @@ import { cn } from '@/lib/utils'
 import { Poppins } from 'next/font/google'
 import { ReactNode } from 'react'
 import NavBar from './_components/navbar'
+import Footer from './_components/footer'
 
 const poppins = Poppins({
 	subsets: ['latin'],
@@ -19,7 +20,7 @@ const MarketingLayout = ({ children }: Props) => {
 			<main className={cn('pt-40 pb-20 bg-slate-100', poppins.className)}>
 				{children}
 			</main>
-			{/* TODO: Footer */}
+			<Footer />
 		</div>
 	)
 }
