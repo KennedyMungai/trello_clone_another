@@ -31,7 +31,7 @@ const MobileSidebar = (props: Props) => {
 				size='sm'
 				variant='outline'
 				onClick={onOpen}
-				className={'block md:hidden'}
+				className={'block md:hidden mr-2'}
 			>
 				<Menu className='h-4 w-4' />
 			</Button>
