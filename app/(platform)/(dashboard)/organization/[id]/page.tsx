@@ -1,7 +1,16 @@
+import { auth } from '@clerk/nextjs'
+
 type Props = {}
 
 const SingleOrganizationPage = (props: Props) => {
-	return <div>SingleOrganizationPage</div>
+	const { userId, orgId } = auth()
+
+	return (
+		<div>
+			User Id: {userId}
+			Organization: {orgId}
+		</div>
+	)
 }
 
 export default SingleOrganizationPage
