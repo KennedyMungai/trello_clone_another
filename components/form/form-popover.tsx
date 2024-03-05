@@ -4,12 +4,15 @@ import { createBoard } from '@/actions/create-board'
 import {
 	Popover,
 	PopoverContent,
-	PopoverTrigger
+	PopoverTrigger,
+	PopoverClose
 } from '@/components/ui/popover'
 import { useAction } from '@/hooks/use-action'
 import { FormInput } from './form-input'
 import FormSubmit from './form-submit'
 import { ReactNode } from 'react'
+import { Button } from '../ui/button'
+import { X } from 'lucide-react'
 
 type Props = {
 	children: ReactNode
@@ -36,6 +39,15 @@ const FormPopOver = ({
 				<div className='text-sm font-medium text-center text-neutral-600 pb-'>
 					Create Board
 				</div>
+				<PopoverClose asChild>
+					<Button
+						size='icon'
+						variant={'ghost'}
+						className='h-auto w-auto absolute top-2 right-2 text-neutral-600'
+					>
+						<X className='h-4 w-4' />
+					</Button>
+				</PopoverClose>
 			</PopoverContent>
 		</Popover>
 	)
