@@ -46,7 +46,10 @@ const Sidebar = ({ storageKey = 't-sidebar-state' }: Props) => {
 	if (!isLoadedOrg || !isLoadedOrgList || userMemberships.isLoading) {
 		return (
 			<>
-				<Skeleton />
+				<div className='flex items-center justify-between mb-2'>
+					<Skeleton className='h-10 w-[50%]' />
+					<Skeleton className='h-10 w-10' />
+				</div>
 			</>
 		)
 	}
@@ -77,8 +80,8 @@ const Sidebar = ({ storageKey = 't-sidebar-state' }: Props) => {
 						key={organization.id}
 						isActive={organization.id === activeOrganization?.id}
 						isExpanded={expanded[organization.id]}
-                        organization={organization as Organization}
-                        onExpand={onExpand}
+						organization={organization as Organization}
+						onExpand={onExpand}
 					/>
 				))}
 			</Accordion>
