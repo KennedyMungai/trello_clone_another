@@ -23,12 +23,12 @@ const Info = (props: Props) => {
 					className='rounded-md object-cover'
 				/>
 			</div>
-			<div className="space-y-1">
-				<p className="font-semibold text-xl">{organization?.name}</p>
-                <div>
-                    <CreditCard className='h-4 w-4 mr-1' />
-                    Free
-                </div>
+			<div className='space-y-1'>
+				<p className='font-semibold text-xl'>{organization?.name}</p>
+				<div className='flex items-center text-xs text-muted-foreground'>
+					<CreditCard className='h-4 w-4 mr-1' />
+					Free
+				</div>
 			</div>
 		</div>
 	)
