@@ -2,10 +2,10 @@
 
 import { createBoard } from '@/actions/create-board'
 import {
-    Popover,
-    PopoverClose,
-    PopoverContent,
-    PopoverTrigger
+	Popover,
+	PopoverClose,
+	PopoverContent,
+	PopoverTrigger
 } from '@/components/ui/popover'
 import { useAction } from '@/hooks/use-action'
 import { X } from 'lucide-react'
@@ -14,6 +14,7 @@ import { toast } from 'sonner'
 import { Button } from '../ui/button'
 import { FormInput } from './form-input'
 import FormSubmit from './form-submit'
+import FormPicker from './form-picker'
 
 type Props = {
 	children: ReactNode
@@ -70,6 +71,7 @@ const FormPopOver = ({
 				</PopoverClose>
 				<form className='space-y-4' action={onSubmit}>
 					<div className='space-y-4'>
+						<FormPicker />
 						<FormInput
 							id={'title'}
 							label='Board Title'
