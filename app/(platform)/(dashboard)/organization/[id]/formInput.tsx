@@ -18,9 +18,8 @@ const FormInput = ({ errors }: Props) => {
 				id='title'
 				name='title'
 				required
+                className="focus:border-0 active:outline-none"
 				placeholder='Enter a board title'
-				className='border-black border p-1'
-				disabled={pending}
 			/>
 			{errors?.title ? (
 				<div>
