@@ -1,6 +1,5 @@
-import { create } from '@/actions/create-board'
-import { Button } from '@/components/ui/button'
 import { db } from '@/lib/db'
+import BoardsForm from './form'
 
 type Props = {}
 
@@ -9,18 +8,7 @@ const SingleOrganizationPage = async (props: Props) => {
 
 	return (
 		<div className='flex flex-col space-y-4'>
-			<form action={create}>
-				<input
-					id='title'
-					name='title'
-					required
-					placeholder='Enter a board title'
-					className='border-black border p-1'
-				/>
-				<Button type='submit' className='ml-2' size={'sm'}>
-					Submit
-				</Button>
-			</form>
+			<BoardsForm />
 			<div className='space-y-2'>
 				{boards.map((board, index) => (
 					<div className='' key={index}>
