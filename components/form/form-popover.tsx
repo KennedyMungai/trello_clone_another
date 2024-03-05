@@ -2,17 +2,17 @@
 
 import { createBoard } from '@/actions/create-board'
 import {
-	Popover,
-	PopoverContent,
-	PopoverTrigger,
-	PopoverClose
+    Popover,
+    PopoverClose,
+    PopoverContent,
+    PopoverTrigger
 } from '@/components/ui/popover'
 import { useAction } from '@/hooks/use-action'
-import { FormInput } from './form-input'
-import FormSubmit from './form-submit'
+import { X } from 'lucide-react'
 import { ReactNode } from 'react'
 import { Button } from '../ui/button'
-import { X } from 'lucide-react'
+import { FormInput } from './form-input'
+import FormSubmit from './form-submit'
 
 type Props = {
 	children: ReactNode
@@ -27,6 +27,15 @@ const FormPopOver = ({
 	side = 'bottom',
 	sideOffset = 0
 }: Props) => {
+	const { execute, fieldErrors } = useAction(createBoard, {
+		onSuccess: (data) => {
+			console.log({ data })
+		},
+		onError: (error) => {
+			console.log({ error })
+		}
+	})
+
 	return (
 		<Popover>
 			<PopoverTrigger asChild>{children}</PopoverTrigger>
