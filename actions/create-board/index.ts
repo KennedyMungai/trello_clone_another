@@ -1,11 +1,11 @@
 'use server'
 
+import { createSafeAction } from '@/lib/create-safe-action'
 import { db } from '@/lib/db'
 import { auth } from '@clerk/nextjs'
 import { revalidatePath } from 'next/cache'
-import { InputType, ReturnType } from './types'
-import { createSafeAction } from '@/lib/create-safe-action'
 import { CreateBoard } from './schema'
+import { InputType, ReturnType } from './types'
 
 const handler = async (data: InputType): Promise<ReturnType> => {
 	const { userId } = auth()
