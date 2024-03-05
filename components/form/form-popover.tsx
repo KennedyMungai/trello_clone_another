@@ -69,6 +69,7 @@ const FormPopOver = ({
 							id={'title'}
 							label='Board Title'
 							type='text'
+							errors={fieldErrors}
 						/>
 					</div>
 					<FormSubmit className='w-full'>Create</FormSubmit>
