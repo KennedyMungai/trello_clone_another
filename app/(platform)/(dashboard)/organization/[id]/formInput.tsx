@@ -1,5 +1,7 @@
 type Props = {
-	errors?: Record<string, any>
+	errors?: {
+		title?: string[]
+	}
 }
 
 const FormInput = ({ errors }: Props) => {
