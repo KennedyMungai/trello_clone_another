@@ -15,6 +15,7 @@ import { Button } from '../ui/button'
 import { FormInput } from './form-input'
 import FormSubmit from './form-submit'
 import FormPicker from './form-picker'
+import { FieldErrors } from '../../lib/create-safe-action'
 
 type Props = {
 	children: ReactNode
@@ -71,7 +72,7 @@ const FormPopOver = ({
 				</PopoverClose>
 				<form className='space-y-4' action={onSubmit}>
 					<div className='space-y-4'>
-						<FormPicker />
+						<FormPicker id='image' errors={fieldErrors} />
 						<FormInput
 							id={'title'}
 							label='Board Title'
