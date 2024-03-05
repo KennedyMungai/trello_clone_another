@@ -1,4 +1,5 @@
-import { User2 } from 'lucide-react'
+import Hint from '@/components/hint'
+import { HelpCircle, User2 } from 'lucide-react'
 
 type Props = {}
 
@@ -18,6 +19,13 @@ const BoardList = (props: Props) => {
 					<span className='text-xs text-muted-foreground'>
 						5 remaining
 					</span>
+					<Hint
+						description='Create a new board'
+						sideOffset={40}
+						side={'right'}
+					>
+						<HelpCircle className='absolute bottom-2 right-2 h-[14px] w-[14px] text-muted-foreground' />
+					</Hint>
 				</div>
 			</div>
 		</div>
