@@ -1,11 +1,14 @@
 import { create } from '@/actions/create-board'
 import { Button } from '@/components/ui/button'
+import { db } from '@/lib/db'
 
 type Props = {}
 
-const SingleOrganizationPage = (props: Props) => {
+const SingleOrganizationPage = async (props: Props) => {
+	const boards = await db.board.findMany({})
+
 	return (
-		<div className=''>
+		<div className='flex flex-col space-y-4'>
 			<form action={create}>
 				<input
 					id='title'
@@ -18,6 +21,13 @@ const SingleOrganizationPage = (props: Props) => {
 					Submit
 				</Button>
 			</form>
+			<div className='space-y-2'>
+				{boards.map((board, index) => (
+					<div className='' key={index}>
+						Board Title: {board.title}
+					</div>
+				))}
+			</div>
 		</div>
 	)
 }
