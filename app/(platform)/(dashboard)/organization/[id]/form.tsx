@@ -1,8 +1,8 @@
 'use client'
 import { createBoard } from '@/actions/create-board'
 import { FormInput } from '@/components/form/form-input'
+import FormSubmit from '@/components/form/form-submit'
 import { useAction } from '@/hooks/use-action'
-import FormButtonAnother from './formButtonAnother'
 
 type Props = {}
 
@@ -26,7 +26,9 @@ const BoardsForm = (props: Props) => {
 		<form action={onSubmit}>
 			<div className='flex flex-col space-y-2'>
 				<FormInput id={"title"} errors={fieldErrors} label="Board Title" />
-				<FormButtonAnother />
+				<FormSubmit>
+					Save
+				</FormSubmit>
 			</div>
 		</form>
 	)
