@@ -22,6 +22,9 @@ const Info = (props: Props) => {
 					className='rounded-md object-cover'
 				/>
 			</div>
+			<div>
+				<p>{organization?.name}</p>
+			</div>
 		</div>
 	)
 }
