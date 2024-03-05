@@ -1,7 +1,5 @@
-type Props = {}
-
-const SingleOrganizationPage = async (props: Props) => {
-	return <div className='flex flex-col space-y-4'></div>
+const SingleOrganizationPage = async () => {
+	return <div className='w-full mb-2'></div>
 }
 
 export default SingleOrganizationPage
