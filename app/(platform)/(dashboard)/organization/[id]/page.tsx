@@ -1,21 +1,9 @@
+import { create } from '@/actions/createBoard'
 import { Button } from '@/components/ui/button'
-import { db } from '@/lib/db'
 
 type Props = {}
 
 const SingleOrganizationPage = (props: Props) => {
-	const create = async (formData: FormData) => {
-		'use server'
-
-		const title = formData.get('title') as string
-
-		await db.board.create({
-			data: {
-				title
-			}
-		})
-	}
-
 	return (
 		<div className=''>
 			<form action={create}>
