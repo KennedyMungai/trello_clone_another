@@ -25,7 +25,7 @@ const BoardsForm = (props: Props) => {
 	return (
 		<form action={onSubmit}>
 			<div className='flex flex-col space-y-2'>
-				<FormInput id={"title"} errors={fieldErrors} />
+				<FormInput id={"title"} errors={fieldErrors} label="Board Title" />
 				<FormButtonAnother />
 			</div>
 		</form>
