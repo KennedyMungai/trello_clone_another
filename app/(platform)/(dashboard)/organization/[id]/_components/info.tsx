@@ -1,6 +1,7 @@
 'use client'
 
 import { useOrganization } from '@clerk/nextjs'
+import { CreditCard } from 'lucide-react'
 import Image from 'next/image'
 
 type Props = {}
@@ -22,8 +23,12 @@ const Info = (props: Props) => {
 					className='rounded-md object-cover'
 				/>
 			</div>
-			<div>
-				<p>{organization?.name}</p>
+			<div className="space-y-1">
+				<p className="font-semibold text-xl">{organization?.name}</p>
+                <div>
+                    <CreditCard className='h-4 w-4 mr-1' />
+                    Free
+                </div>
 			</div>
 		</div>
 	)
