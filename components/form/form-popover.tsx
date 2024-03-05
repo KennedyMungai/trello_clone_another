@@ -2,10 +2,10 @@
 
 import { createBoard } from '@/actions/create-board'
 import {
-    Popover,
-    PopoverClose,
-    PopoverContent,
-    PopoverTrigger
+	Popover,
+	PopoverClose,
+	PopoverContent,
+	PopoverTrigger
 } from '@/components/ui/popover'
 import { useAction } from '@/hooks/use-action'
 import { X } from 'lucide-react'
@@ -36,6 +36,12 @@ const FormPopOver = ({
 		}
 	})
 
+	const onSubmit = (formData: FormData) => {
+		const title = formData.get('title') as string
+
+		execute({ title })
+	}
+
 	return (
 		<Popover>
 			<PopoverTrigger asChild>{children}</PopoverTrigger>
@@ -57,7 +63,7 @@ const FormPopOver = ({
 						<X className='h-4 w-4' />
 					</Button>
 				</PopoverClose>
-				<form className='space-y-4'>
+				<form className='space-y-4' action={onSubmit}>
 					<div className='space-y-4'>
 						<FormInput
 							id={'title'}
