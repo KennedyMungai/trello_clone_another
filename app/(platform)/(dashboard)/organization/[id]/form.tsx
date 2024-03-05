@@ -13,7 +13,7 @@ const BoardsForm = (props: Props) => {
 	return (
 		<form action={dispatch}>
 			<div className='flex flex-col space-y-2'>
-				<FormInput />
+				<FormInput errors={state?.errors} />
 				<FormButton />
 			</div>
 		</form>
