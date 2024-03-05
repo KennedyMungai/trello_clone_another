@@ -11,6 +11,8 @@
 			"trpc",
 			"usehooks",
 			"zustand"
-		]
+		],
+		"WillLuke.nextjs.addTypesOnSave": true,
+		"WillLuke.nextjs.hasPrompted": true
 	}
 }
