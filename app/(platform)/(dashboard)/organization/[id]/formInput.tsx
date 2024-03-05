@@ -1,9 +1,15 @@
-import React from 'react'
-
 type Props = {}
 
 const FormInput = (props: Props) => {
-	return <div>FormInput</div>
+	return (
+		<input
+			id='title'
+			name='title'
+			required
+			placeholder='Enter a board title'
+			className='border-black border p-1'
+		/>
+	)
 }
 
 export default FormInput

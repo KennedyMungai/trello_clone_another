@@ -1,7 +1,7 @@
 'use client'
 import { create } from '@/actions/create-board'
-import { Button } from '@/components/ui/button'
 import { useFormState } from 'react-dom'
+import FormInput from './formInput'
 
 type Props = {}
 
@@ -12,13 +12,7 @@ const BoardsForm = (props: Props) => {
 	return (
 		<form action={dispatch}>
 			<div className='flex flex-col space-y-2'>
-				<input
-					id='title'
-					name='title'
-					required
-					placeholder='Enter a board title'
-					className='border-black border p-1'
-				/>
+				<FormInput />
 				{state?.errors?.title ? (
 					<div>
 						{state.errors.title.map((error: string, index) => (
@@ -29,9 +23,6 @@ const BoardsForm = (props: Props) => {
 					</div>
 				) : null}
 			</div>
-			<Button type='submit' className='ml-2' size={'sm'}>
-				Submit
-			</Button>
 		</form>
 	)
 }
