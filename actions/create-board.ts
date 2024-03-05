@@ -17,8 +17,8 @@ const CreateBoard = z.object({
 		.min(3, { message: 'Minimum length of 3 letters is required' })
 })
 
-export const create = async (formData: FormData) => {
-	const { title } = CreateBoard.parse({ title: formData.get('title') })
+export const create = async (prevState: State, formData: FormData) => {
+	const { title } = CreateBoard.safeParse({ title: formData.get('title') })
 
 	await db.board.create({
 		data: {
