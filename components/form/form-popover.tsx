@@ -48,6 +48,15 @@ const FormPopOver = ({
 						<X className='h-4 w-4' />
 					</Button>
 				</PopoverClose>
+				<form>
+					<div className='space-y-4'>
+						<FormInput
+							id={'title'}
+							label='Board Title'
+							type='text'
+						/>
+					</div>
+				</form>
 			</PopoverContent>
 		</Popover>
 	)
