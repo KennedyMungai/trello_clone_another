@@ -1,14 +1,27 @@
-type Props = {}
+type Props = {
+	errors?: Record<string, any>
+}
 
-const FormInput = (props: Props) => {
+const FormInput = ({ errors }: Props) => {
 	return (
-		<input
-			id='title'
-			name='title'
-			required
-			placeholder='Enter a board title'
-			className='border-black border p-1'
-		/>
+		<div className=''>
+			<input
+				id='title'
+				name='title'
+				required
+				placeholder='Enter a board title'
+				className='border-black border p-1'
+			/>
+			{errors?.title ? (
+				<div>
+					{errors?.title.map((error: string, index: number) => (
+						<p key={index} className='text-rose-500'>
+							{error}
+						</p>
+					))}
+				</div>
+			) : null}
+		</div>
 	)
 }
 

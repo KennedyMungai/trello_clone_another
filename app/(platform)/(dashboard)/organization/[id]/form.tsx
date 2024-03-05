@@ -15,15 +15,6 @@ const BoardsForm = (props: Props) => {
 			<div className='flex flex-col space-y-2'>
 				<FormInput />
 				<FormButton />
-				{state?.errors?.title ? (
-					<div>
-						{state.errors.title.map((error: string, index) => (
-							<p key={index} className='text-rose-500'>
-								{error}
-							</p>
-						))}
-					</div>
-				) : null}
 			</div>
 		</form>
 	)
