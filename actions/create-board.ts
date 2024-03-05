@@ -2,6 +2,7 @@
 
 import { db } from '@/lib/db'
 import { revalidatePath } from 'next/cache'
+import { redirect } from 'next/navigation'
 import { z } from 'zod'
 
 export type State = {
@@ -18,13 +19,31 @@ const CreateBoard = z.object({
 })
 
 export const create = async (prevState: State, formData: FormData) => {
-	const { title } = CreateBoard.safeParse({ title: formData.get('title') })
-
-	await db.board.create({
-		data: {
-			title
-		}
+	const validatedFields = CreateBoard.safeParse({
+		title: formData.get('title')
 	})
 
+	if (!validatedFields.success) {
+		return {
+			errors: validatedFields.error.flatten().fieldErrors,
+			message: 'Missing Fields'
+		}
+	}
+
+	const { title } = validatedFields.data
+
+	try {
+		await db.board.create({
+			data: {
+				title
+			}
+		})
+	} catch (error) {
+		return {
+			message: 'Database Error'
+		}
+	}
+
 	revalidatePath('/organization/org_2dDnc6sRJSLCLIvJ5eQ9d92aeKk')
+	redirect('/organization/org_2dDnc6sRJSLCLIvJ5eQ9d92aeKk')
 }
