@@ -51,7 +51,7 @@ const SingleBoardLayoutPage = async ({ children, params: { id } }: Props) => {
 			style={{ backgroundImage: `url(${board.imageFullUrl})` }}
 			className='relative h-full bg-no-repeat bg-cover bg-center'
 		>
-			<BoardNavbar />
+			<BoardNavbar id={id} />
 			<div className='absolute inset-0 bg-black/10' />
 			<main className='relative pt-28 h-full'>{children}</main>
 		</div>
