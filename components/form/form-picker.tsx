@@ -14,7 +14,7 @@ type Props = {
 }
 
 const FormPicker = ({ id, errors }: Props) => {
-	const [images, setImages] = useState<Array<Record<string, any>>>([])
+	const [images, setImages] = useState<Array<Record<string, any>>>(defaultImages)
 	const [loading, setLoading] = useState(true)
 	const [selectedImageId, setSelectedImageId] = useState(null)
 
