@@ -21,4 +21,8 @@ model Board {
   imageThumbUrl  String @db.Text
   imageFullUrl   String @db.Text
   imageUserName  String @db.Text
+  imageLinkHTML  String @db.Text
+
+  createAt  DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
