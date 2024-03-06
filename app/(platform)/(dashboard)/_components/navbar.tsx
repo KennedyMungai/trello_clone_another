@@ -3,24 +3,28 @@ import { Button } from '@/components/ui/button'
 import { OrganizationSwitcher, UserButton } from '@clerk/nextjs'
 import { Plus } from 'lucide-react'
 import MobileSidebar from './mobile-sidebar'
+import FormPopover from '@/components/form/form-popover'
 
 type Props = {}
 
 const NavBar = (props: Props) => {
 	return (
 		<nav className='fixed z-50 top-0 w-full h-14 border-b shadow-sm bg-white flex items-center px-4'>
-            <MobileSidebar />
+			<MobileSidebar />
 			<div className='flex items-center gap-x-4'>
 				<div className='hidden md:flex'>
 					<Logo />
 				</div>
-				<Button
-					variant={'primary'}
-					size='sm'
-					className='rounded-sm hidden md:block h-auto py-1.5 px-2'
-				>
-					Create
-				</Button>
+				<FormPopover align='start' side='bottom' sideOffset={18}>
+					<Button
+						variant={'primary'}
+						size='sm'
+						className='rounded-sm hidden md:block h-auto py-1.5 px-2'
+					>
+						Create
+					</Button>
+				</FormPopover>
+
 				<Button
 					variant={'primary'}
 					size='sm'
