@@ -9,7 +9,7 @@ import {
 } from '@/components/ui/popover'
 import { useAction } from '@/hooks/use-action'
 import { X } from 'lucide-react'
-import { ReactNode } from 'react'
+import { ElementRef, ReactNode, useRef } from 'react'
 import { toast } from 'sonner'
 import { Button } from '../ui/button'
 import { FormInput } from './form-input'
@@ -29,15 +29,14 @@ const FormPopOver = ({
 	side = 'bottom',
 	sideOffset = 0
 }: Props) => {
+	const closeRef = useRef<ElementRef<'button'>>(null)
+
 	const { execute, fieldErrors } = useAction(createBoard, {
 		onSuccess: (data) => {
-			console.log({ data })
-
 			toast.success('Board Created')
+			closeRef.current?.click()
 		},
 		onError: (error) => {
-			console.log({ error })
-
 			toast.error(error)
 		}
 	})
@@ -61,7 +60,7 @@ const FormPopOver = ({
 				<div className='text-sm font-medium text-center text-neutral-600 pb-'>
 					Create Board
 				</div>
-				<PopoverClose asChild>
+				<PopoverClose asChild ref={closeRef}>
 					<Button
 						size='icon'
 						variant={'ghost'}
