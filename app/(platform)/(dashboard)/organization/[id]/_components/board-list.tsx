@@ -5,16 +5,21 @@ import { auth } from '@clerk/nextjs'
 import { HelpCircle, User2 } from 'lucide-react'
 import { redirect } from 'next/navigation'
 
-type Props = {}
-
-const BoardList = async (props: Props) => {
+const BoardList = async () => {
 	const { orgId } = auth()
 
 	if (!orgId) {
 		redirect('/select-org')
 	}
 
-	const boards = await db.board.findMany({})
+	const boards = await db.board.findMany({
+		where: {
+			orgId
+		},
+		orderBy: {
+			createAt: 'desc'
+		}
+	})
 
 	return (
 		<div className='space-y-4'>
