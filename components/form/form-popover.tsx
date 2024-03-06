@@ -13,9 +13,8 @@ import { ReactNode } from 'react'
 import { toast } from 'sonner'
 import { Button } from '../ui/button'
 import { FormInput } from './form-input'
-import FormSubmit from './form-submit'
 import FormPicker from './form-picker'
-import { FieldErrors } from '../../lib/create-safe-action'
+import FormSubmit from './form-submit'
 
 type Props = {
 	children: ReactNode
@@ -45,8 +44,10 @@ const FormPopOver = ({
 
 	const onSubmit = (formData: FormData) => {
 		const title = formData.get('title') as string
+		const image = formData.get('image') as string
 
-		execute({ title })
+		console.log(image)
+		// execute({ title })
 	}
 
 	return (
