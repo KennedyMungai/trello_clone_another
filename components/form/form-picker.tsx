@@ -5,6 +5,7 @@ import { unsplash } from '@/lib/unsplash'
 import { cn } from '@/lib/utils'
 import { Loader2 } from 'lucide-react'
 import Image from 'next/image'
+import Link from 'next/link'
 import { useEffect, useState } from 'react'
 import { useFormStatus } from 'react-dom'
 
@@ -14,7 +15,8 @@ type Props = {
 }
 
 const FormPicker = ({ id, errors }: Props) => {
-	const [images, setImages] = useState<Array<Record<string, any>>>(defaultImages)
+	const [images, setImages] =
+		useState<Array<Record<string, any>>>(defaultImages)
 	const [loading, setLoading] = useState(true)
 	const [selectedImageId, setSelectedImageId] = useState(null)
 
@@ -77,6 +79,13 @@ const FormPicker = ({ id, errors }: Props) => {
 							alt='Unsplash Image'
 							className='object-cover rounded-sm'
 						/>
+						<Link
+							href={image.links.html}
+							target='_blank'
+							className='opacity-0 group-hover:opacity-100 absolute bottom-0 w-full text-[10px] truncate text-white hover:underline p-1 bg-black/10'
+						>
+							{image.user.name}
+						</Link>
 					</div>
 				))}
 			</div>
