@@ -1,10 +1,21 @@
 import FormPopOver from '@/components/form/form-popover'
 import Hint from '@/components/hint'
+import { db } from '@/lib/db'
+import { auth } from '@clerk/nextjs'
 import { HelpCircle, User2 } from 'lucide-react'
+import { redirect } from 'next/navigation'
 
 type Props = {}
 
-const BoardList = (props: Props) => {
+const BoardList = async (props: Props) => {
+	const { orgId } = auth()
+
+	if (!orgId) {
+		redirect('/select-org')
+	}
+
+	const boards = await db.board.findMany({})
+
 	return (
 		<div className='space-y-4'>
 			<div className='flex items-center font-semibold text-lg text-neutral-700'>
