@@ -10,6 +10,27 @@ type Props = {
 	}
 }
 
+export const generateMetadata = async ({ params: { id } }: Props) => {
+	const { orgId } = auth()
+
+	if (!orgId) {
+		return {
+			title: 'Board'
+		}
+	}
+
+	const board = await db.board.findUnique({
+		where: {
+			id,
+			orgId
+		}
+	})
+
+	return {
+		title: board?.title || 'Board'
+	}
+}
+
 const SingleBoardLayoutPage = async ({ children, params: { id } }: Props) => {
 	const { orgId } = auth()
 
