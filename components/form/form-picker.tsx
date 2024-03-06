@@ -3,7 +3,7 @@
 import { defaultImages } from '@/constants/images'
 import { unsplash } from '@/lib/unsplash'
 import { cn } from '@/lib/utils'
-import { Loader2 } from 'lucide-react'
+import { Check, Loader2 } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
@@ -73,6 +73,11 @@ const FormPicker = ({ id, errors }: Props) => {
 							setSelectedImageId(image.id)
 						}}
 					>
+						{selectedImageId === image.id && (
+							<div className='absolute inset-y-0 h-full w-full bg-black/30 flex items-center justify-center'>
+								<Check />
+							</div>
+						)}
 						<Image
 							fill
 							src={image.urls.thumb}
