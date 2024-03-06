@@ -7,7 +7,10 @@ type Props = { data: Board }
 
 const BoardTitleForm = ({ data }: Props) => {
 	return (
-		<Button className='font-bold text-lg h-auto w-auto p-1 px-2'>
+		<Button
+			className='font-bold text-lg h-auto w-auto p-1 px-2'
+			variant='transparent'
+		>
 			{data.title}
 		</Button>
 	)
