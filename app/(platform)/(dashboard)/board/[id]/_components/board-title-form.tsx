@@ -25,12 +25,24 @@ const BoardTitleForm = ({ data }: Props) => {
 		})
 	}
 
+	const onSubmit = (formData: FormData) => {
+		const title = formData.get('title') as string
+	}
+
+	const onBlur = () => {
+		formRef.current?.requestSubmit()
+	}
+
 	if (isEditing) {
 		return (
-			<form className='flex items-center gap-x-2' ref={formRef}>
+			<form
+				className='flex items-center gap-x-2'
+				ref={formRef}
+				action={onSubmit}
+			>
 				<FormInput
 					id='title'
-					onBlur={() => {}}
+					onBlur={onBlur}
 					defaultValue={data.title}
 					ref={inputRef}
 					className='text-lg font-bold px-[7px] py-1 h-7 bg-transparent focus-visible:outline-none focus-visible:ring-transparent border-none'
