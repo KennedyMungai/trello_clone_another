@@ -75,7 +75,7 @@ const FormPicker = ({ id, errors }: Props) => {
 					>
 						{selectedImageId === image.id && (
 							<div className='absolute inset-y-0 h-full w-full bg-black/30 flex items-center justify-center'>
-								<Check />
+								<Check className="h-4 w-4 text-white" />
 							</div>
 						)}
 						<Image
