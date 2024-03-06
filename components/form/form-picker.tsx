@@ -1,11 +1,12 @@
 'use client'
 
+import { defaultImages } from '@/constants/images'
 import { unsplash } from '@/lib/unsplash'
 import { cn } from '@/lib/utils'
 import { Loader2 } from 'lucide-react'
 import Image from 'next/image'
 import { useEffect, useState } from 'react'
-import { useFormState } from 'react-dom'
+import { useFormStatus } from 'react-dom'
 
 type Props = {
 	id: string
@@ -17,7 +18,7 @@ const FormPicker = ({ id, errors }: Props) => {
 	const [loading, setLoading] = useState(true)
 	const [selectedImageId, setSelectedImageId] = useState(null)
 
-	const { pending } = useFormState()
+	const { pending } = useFormStatus()
 
 	useEffect(() => {
 		const fetchImages = async () => {
@@ -37,7 +38,7 @@ const FormPicker = ({ id, errors }: Props) => {
 				}
 			} catch (error) {
 				console.log(error)
-				setImages([])
+				setImages(defaultImages)
 			} finally {
 				setLoading(false)
 			}
@@ -67,11 +68,16 @@ const FormPicker = ({ id, errors }: Props) => {
 						onClick={() => {
 							if (pending) return
 
-                            setSelectedImageId(image.id)
+							setSelectedImageId(image.id)
 						}}
 					>
-                        <Image fill src={image.urls.thumb} alt="Unsplash Image" className="object-cover rounded-sm" />
-                    </div>
+						<Image
+							fill
+							src={image.urls.thumb}
+							alt='Unsplash Image'
+							className='object-cover rounded-sm'
+						/>
+					</div>
 				))}
 			</div>
 		</div>
