@@ -13,7 +13,7 @@ type Props = {
 const ListItem = ({ data, index }: Props) => {
 	const [isEditing, setIsEditing] = useState(false)
 
-	const textareaRef = useRef<ElementRef<'textarea'>>(null)
+	const textAreaRef = useRef<ElementRef<'textarea'>>(null)
 
 	const disableEditing = () => {
 		setIsEditing(false)
