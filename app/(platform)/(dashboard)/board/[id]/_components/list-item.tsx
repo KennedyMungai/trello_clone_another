@@ -22,7 +22,7 @@ const ListItem = ({ data, index }: Props) => {
 	const enableEditing = () => {
 		setIsEditing(true)
 		setTimeout(() => {
-			textareaRef.current?.focus()
+			textAreaRef.current?.focus()
 		})
 	}
 
