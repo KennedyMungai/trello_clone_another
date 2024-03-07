@@ -1,6 +1,7 @@
 'use client'
 
 import { ListWithCards } from '@/types'
+import ListForm from './list-form'
 
 type Props = {
 	boardId: string
@@ -8,7 +9,13 @@ type Props = {
 }
 
 const ListContainer = ({ boardId, data }: Props) => {
-	return <div>ListContainer</div>
+	return (
+		<ol>
+			<ListForm />
+
+			<div className='flex-shrink-0 w-1' />
+		</ol>
+	)
 }
 
 export default ListContainer
