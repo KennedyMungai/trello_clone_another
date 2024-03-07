@@ -16,7 +16,7 @@ type Props = {
 	defaultValue?: string
 }
 
-const FormTextArea = forwardRef<HTMLFormElement, Props>(
+const FormTextarea = forwardRef<HTMLFormElement, Props>(
 	(
 		{
 			className,
@@ -37,6 +37,6 @@ const FormTextArea = forwardRef<HTMLFormElement, Props>(
 	}
 )
 
-FormTextArea.displayName = 'FormTextArea'
+FormTextarea.displayName = 'FormTextarea'
 
-export default FormTextArea
+export default FormTextarea
