@@ -35,19 +35,16 @@ const ListOptions = ({ data, onAddCard }: Props) => {
 			}
 		})
 
-	const { execute: executeCopy, fieldErrors: copyFieldErrors } = useAction(
-		copyList,
-		{
-			onSuccess: (data) => {
-				toast.success(`List ${data.title} successfully copied`)
+	const { execute: executeCopy } = useAction(copyList, {
+		onSuccess: (data) => {
+			toast.success(`List ${data.title} successfully copied`)
 
-				closePopoverRef.current?.click()
-			},
-			onError: (error) => {
-				toast.error(error)
-			}
+			closePopoverRef.current?.click()
+		},
+		onError: (error) => {
+			toast.error(error)
 		}
-	)
+	})
 
 	const onDelete = (formData: FormData) => {
 		const id = formData.get('id') as string
