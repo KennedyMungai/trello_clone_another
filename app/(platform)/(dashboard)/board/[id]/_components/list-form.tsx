@@ -5,6 +5,8 @@ import { Plus } from 'lucide-react'
 import { ElementRef, KeyboardEvent, useRef, useState } from 'react'
 import { useEventListener, useOnClickOutside } from 'usehooks-ts'
 import ListWrapper from './list-wrapper'
+import { useParams } from 'next/navigation'
+import FormSubmit from '@/components/form/form-submit'
 
 type Props = {}
 
@@ -13,6 +15,8 @@ const ListForm = (props: Props) => {
 
 	const formRef = useRef<ElementRef<'form'>>(null)
 	const inputRef = useRef<ElementRef<'input'>>(null)
+
+	const { id } = useParams()
 
 	const enableEditing = () => {
 		setIsEditing(true)
@@ -51,6 +55,10 @@ const ListForm = (props: Props) => {
 						}
 						placeholder={'Enter List Title...'}
 					/>
+					<input hidden value={id} name='boardId' />
+					<div className='flex items-center gap-x-1'>
+						<FormSubmit>Add List</FormSubmit>
+					</div>
 				</form>
 			</ListWrapper>
 		)
