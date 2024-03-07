@@ -6,6 +6,7 @@ import { auth } from '@clerk/nextjs'
 import { revalidatePath } from 'next/cache'
 import { DeleteBoard } from './schema'
 import { InputType, ReturnType } from './types'
+import { redirect } from 'next/navigation'
 
 const handler = async (data: InputType): Promise<ReturnType> => {
 	const { userId, orgId } = auth()
@@ -35,7 +36,7 @@ const handler = async (data: InputType): Promise<ReturnType> => {
 
 	revalidatePath(`/organization/${orgId}`)
 
-	return { data: board }
+	redirect(`/organization/${orgId}`)
 }
 
 export const deleteBoard = createSafeAction(DeleteBoard, handler)
