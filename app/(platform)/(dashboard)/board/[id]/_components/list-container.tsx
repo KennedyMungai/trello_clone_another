@@ -1,7 +1,9 @@
 'use client'
 
 import { ListWithCards } from '@/types'
+import { useEffect, useState } from 'react'
 import ListForm from './list-form'
+import ListItem from './list-item'
 
 type Props = {
 	boardId: string
@@ -9,10 +11,18 @@ type Props = {
 }
 
 const ListContainer = ({ boardId, data }: Props) => {
+	const [orderedData, setOrderedData] = useState(data)
+
+	useEffect(() => {
+		setOrderedData(data)
+	}, [data])
+
 	return (
 		<ol>
+			{orderedData.map((list, index) => (
+				<ListItem key={list.id} data={list} index={index} />
+			))}
 			<ListForm />
-
 			<div className='flex-shrink-0 w-1' />
 		</ol>
 	)
