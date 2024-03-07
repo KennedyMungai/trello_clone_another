@@ -1,10 +1,10 @@
 'use client'
 
-import { List } from '@prisma/client'
+import { ListWithCards } from '@/types'
 
 type Props = {
 	boardId: string
-	data: List[]
+	data: ListWithCards[]
 }
 
 const ListContainer = ({ boardId, data }: Props) => {
