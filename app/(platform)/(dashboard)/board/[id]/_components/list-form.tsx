@@ -1,12 +1,13 @@
 'use client'
 
 import { FormInput } from '@/components/form/form-input'
-import { Plus } from 'lucide-react'
+import { Plus, X } from 'lucide-react'
 import { ElementRef, KeyboardEvent, useRef, useState } from 'react'
 import { useEventListener, useOnClickOutside } from 'usehooks-ts'
 import ListWrapper from './list-wrapper'
 import { useParams } from 'next/navigation'
 import FormSubmit from '@/components/form/form-submit'
+import { Button } from '@/components/ui/button'
 
 type Props = {}
 
@@ -58,6 +59,13 @@ const ListForm = (props: Props) => {
 					<input hidden value={id} name='boardId' />
 					<div className='flex items-center gap-x-1'>
 						<FormSubmit>Add List</FormSubmit>
+						<Button
+							onClick={disableEditing}
+							size='sm'
+							variant='ghost'
+						>
+							<X className='h-5 w-5' />
+						</Button>
 					</div>
 				</form>
 			</ListWrapper>
