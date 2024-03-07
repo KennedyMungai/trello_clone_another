@@ -2,8 +2,8 @@
 
 type Props = {
 	isEditing: boolean
-	enableEditing: () => {}
-	disableEditing: () => {}
+	enableEditing: () => void
+	disableEditing: () => void
 	listId: string
 }
 
