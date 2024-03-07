@@ -1,4 +1,5 @@
-import { deleteList } from '@/actions/list/delete-board'
+import { copyList } from '@/actions/list/copy-list'
+import { deleteList } from '@/actions/list/delete-list'
 import FormSubmit from '@/components/form/form-submit'
 import { Button } from '@/components/ui/button'
 import {
@@ -22,22 +23,44 @@ type Props = {
 const ListOptions = ({ data, onAddCard }: Props) => {
 	const closePopoverRef = useRef<ElementRef<'button'>>(null)
 
-	const { execute: executeDelete, fieldErrors } = useAction(deleteList, {
-		onSuccess: (data) => {
-			toast.success(`List ${data.title} successfully deleted`)
+	const { execute: executeDelete, fieldErrors: deleteFieldErrors } =
+		useAction(deleteList, {
+			onSuccess: (data) => {
+				toast.success(`List ${data.title} successfully deleted`)
 
-			closePopoverRef.current?.click()
-		},
-		onError: (error) => {
-			toast.error(error)
+				closePopoverRef.current?.click()
+			},
+			onError: (error) => {
+				toast.error(error)
+			}
+		})
+
+	const { execute: executeCopy, fieldErrors: copyFieldErrors } = useAction(
+		copyList,
+		{
+			onSuccess: (data) => {
+				toast.success(`List ${data.title} successfully copied`)
+
+				closePopoverRef.current?.click()
+			},
+			onError: (error) => {
+				toast.error(error)
+			}
 		}
-	})
+	)
 
 	const onDelete = (formData: FormData) => {
 		const id = formData.get('id') as string
 		const boardId = formData.get('boardId') as string
 
 		executeDelete({ id, boardId })
+	}
+
+	const onCopy = (formData: FormData) => {
+		const id = formData.get('id') as string
+		const boardId = formData.get('boardId') as string
+
+		executeCopy({ id, boardId })
 	}
 
 	return (
@@ -68,7 +91,7 @@ const ListOptions = ({ data, onAddCard }: Props) => {
 					<Plus className='h-4 w-4 mr-4' />
 					Add Card...
 				</Button>
-				<form>
+				<form action={onCopy}>
 					<input hidden name='id' id='id' value={data.id} />
 					<input
 						hidden
