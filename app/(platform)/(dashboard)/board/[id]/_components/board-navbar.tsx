@@ -1,5 +1,5 @@
 import { Board } from '@prisma/client'
-import BoardOptions from '../../../_components/board-options'
+import BoardOptions from './board-options'
 import BoardTitleForm from './board-title-form'
 
 type Props = {
