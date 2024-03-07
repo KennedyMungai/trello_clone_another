@@ -1,3 +1,5 @@
+'use client'
+
 import { List } from '@prisma/client'
 
 type Props = {
