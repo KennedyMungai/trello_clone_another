@@ -7,6 +7,7 @@ import { List } from 'postcss/lib/list'
 import { ElementRef, useRef, useState } from 'react'
 import { toast } from 'sonner'
 import { useEventListener } from 'usehooks-ts'
+import ListOptions from './list-options'
 
 type Props = {
 	data: List
@@ -105,6 +106,7 @@ const ListHeader = ({ data }: Props) => {
 					{title}
 				</div>
 			)}
+			<ListOptions data={data} onAddCard={() => {}} />
 		</div>
 	)
 }
