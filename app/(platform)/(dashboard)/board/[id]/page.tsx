@@ -24,6 +24,9 @@ const SingleBoardPage = async ({ params: { id } }: Props) => {
 					order: 'asc'
 				}
 			}
+		},
+		orderBy: {
+			order: 'asc'
 		}
 	})
 
