@@ -94,6 +94,21 @@ const ListContainer = ({ boardId, data }: Props) => {
 				setOrderedData(newOrderedData)
 
 				// TODO:// Trigger Server Action
+
+				// User moved the card to another list
+			} else {
+				// Remove card from the source list
+				const [movedCard] = sourceList.cards.splice(source.index, 1)
+
+				// Assign the new list id to the moved card
+				movedCard.listId = destination.droppableId
+
+				// Add the card to the destination list
+				destList.cards.splice(destination.index, 0, movedCard)
+
+				sourceList.cards.forEach((card, index) => {
+					card.order = index
+				})
 			}
 		}
 	}
