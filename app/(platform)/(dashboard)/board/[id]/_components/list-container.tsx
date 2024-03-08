@@ -137,7 +137,8 @@ const ListContainer = ({ boardId, data }: Props) => {
 				})
 
 				setOrderedData(newOrderedData)
-				// TODO: Trigger Server Actions
+
+				executeUpdateCardOrder({boardId, items: destList.cards})
 			}
 		}
 	}
