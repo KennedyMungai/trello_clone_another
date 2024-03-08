@@ -54,7 +54,7 @@ const CardForm = forwardRef<HTMLTextAreaElement, Props>(
 
 		const onSubmit = (formData: FormData) => {
 			const title = formData.get('title') as string
-			const boardId = formData.get('formId') as string
+			const boardId = formData.get('boardId') as string
 			const listId = formData.get('listId') as string
 
 			execute({ title, listId, boardId })
@@ -75,6 +75,7 @@ const CardForm = forwardRef<HTMLTextAreaElement, Props>(
 						errors={fieldErrors}
 					/>
 					<input hidden id='listId' name='listId' value={listId} />
+					<input hidden id='boardId' name='boardId' value={id} />
 					<div className='flex items-center gap-x-1'>
 						<FormSubmit>Add Card</FormSubmit>
 						<Button
