@@ -8,6 +8,7 @@ import { useEffect, useState } from 'react'
 import { toast } from 'sonner'
 import ListForm from './list-form'
 import ListItem from './list-item'
+import { updateCardOrder } from '@/actions/card/update-card-order'
 
 type Props = {
 	boardId: string
@@ -29,6 +30,15 @@ const ListContainer = ({ boardId, data }: Props) => {
 	const { execute: executeUpdateListOrder } = useAction(updateListOrder, {
 		onSuccess: () => {
 			toast.success('List order updated')
+		},
+		onError: (error) => {
+			toast.error(error)
+		}
+	})
+
+	const { execute: executeUpdateCardOrder } = useAction(updateCardOrder, {
+		onSuccess: () => {
+			toast.success('Card order updated')
 		},
 		onError: (error) => {
 			toast.error(error)
@@ -104,7 +114,7 @@ const ListContainer = ({ boardId, data }: Props) => {
 
 				setOrderedData(newOrderedData)
 
-				// TODO:// Trigger Server Action
+				executeUpdateCardOrder({ boardId, items: reorderedCards })
 
 				// User moved the card to another list
 			} else {
