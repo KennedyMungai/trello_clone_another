@@ -51,6 +51,51 @@ const ListContainer = ({ boardId, data }: Props) => {
 
 			// TODO: Trigger server action
 		}
+
+		// User moved a card
+		if (type === 'card') {
+			let newOrderedData = [...orderedData]
+
+			// Source and destination list
+			const sourceList = newOrderedData.find(
+				(list) => list.id === source.droppableId
+			)
+
+			const destList = newOrderedData.find(
+				(list) => list.id === destination.droppableId
+			)
+
+			if (!sourceList || !destList) return
+
+			// Check if the card exists on the source list
+			if (!sourceList.cards) {
+				sourceList.cards = []
+			}
+
+			// Check if the card exists on the destination list
+			if (!destList.cards) {
+				destList.cards = []
+			}
+
+			// Moving the card in the same list
+			if (source.droppableId === destination.droppableId) {
+				const reorderedCards = reorder(
+					sourceList.cards,
+					source.index,
+					destination.index
+				)
+
+				reorderedCards.forEach((card, index) => {
+					card.order = index
+				})
+
+				sourceList.cards = reorderedCards
+
+				setOrderedData(newOrderedData)
+
+				// TODO:// Trigger Server Action
+			}
+		}
 	}
 
 	return (
