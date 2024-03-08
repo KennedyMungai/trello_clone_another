@@ -109,6 +109,14 @@ const ListContainer = ({ boardId, data }: Props) => {
 				sourceList.cards.forEach((card, index) => {
 					card.order = index
 				})
+
+				// Update the order for each card in the destination list
+				destList.cards.forEach((card, index) => {
+					card.order = index
+				})
+
+				setOrderedData(newOrderedData)
+				// TODO: Trigger Server Actions
 			}
 		}
 	}
