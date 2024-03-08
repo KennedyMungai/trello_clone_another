@@ -1,8 +1,11 @@
 'use client'
 
+import { updateListOrder } from '@/actions/list/update-list-order'
+import { useAction } from '@/hooks/use-action'
 import { ListWithCards } from '@/types'
 import { DragDropContext, Droppable } from '@hello-pangea/dnd'
 import { useEffect, useState } from 'react'
+import { toast } from 'sonner'
 import ListForm from './list-form'
 import ListItem from './list-item'
 
@@ -22,6 +25,15 @@ function reorder<T>(list: T[], startIndex: number, endIndex: number) {
 
 const ListContainer = ({ boardId, data }: Props) => {
 	const [orderedData, setOrderedData] = useState(data)
+
+	const { execute: executeUpdateListOrder } = useAction(updateListOrder, {
+		onSuccess: () => {
+			toast.success('List order updated')
+		},
+		onError: (error) => {
+			toast.error(error)
+		}
+	})
 
 	useEffect(() => {
 		setOrderedData(data)
@@ -48,8 +60,7 @@ const ListContainer = ({ boardId, data }: Props) => {
 			).map((item, index) => ({ ...item, order: index }))
 
 			setOrderedData(items)
-
-			// TODO: Trigger server action
+			executeUpdateListOrder({ items, boardId })
 		}
 
 		// User moved a card
