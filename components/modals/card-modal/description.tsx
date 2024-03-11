@@ -52,12 +52,15 @@ const Description = ({ data }: Props) => {
             <AlignLeft className="h-5 w-5 mt-0.5 text-neutral-700" />
             <div className="w-full">
                 <p className="font-semibold text-neutral-700 mb-2">Description</p>
-                <div role='button' className='min-h-[78px] bg-neutral-200 text-sm font-medium py-3 px-3.5 rounded-md'>
-                    {data.description || "Add a more detailed description..."}
-                </div>
+                {
+                    isEditing
+                        ? (<p>Editing</p>)
+                        : (<div onClick={enableEditing} role='button' className='min-h-[78px] bg-neutral-200 text-sm font-medium py-3 px-3.5 rounded-md'>{data.description || "Add a more detailed description..."}
+                        </div>)
+                }
+
             </div>
-            {data.description}
-        </div>
+        </div >
     )
 }
 
