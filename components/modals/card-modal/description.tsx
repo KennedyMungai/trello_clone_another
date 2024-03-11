@@ -78,7 +78,10 @@ const Description = ({ data }: Props) => {
                                     id={"description"}
                                     className={"w-full mt-2"}
                                     placeholder="Add a more detailed description"
-                                    defaultValue={data.description || undefined} errors={fieldErrors} />
+                                    defaultValue={data.description || undefined}
+                                    errors={fieldErrors}
+                                    ref={textareaRef}
+                                />
                                 <div className="flex items-center gap-x-2">
                                     <FormSubmit>
                                         Save
