@@ -2,7 +2,7 @@ import { db } from '@/lib/db'
 import { auth } from '@clerk/nextjs'
 import { NextResponse } from 'next/server'
 
-const GET = async (
+export const GET = async (
 	req: Request,
 	{ params: { cardId } }: { params: { cardId: string } }
 ) => {
