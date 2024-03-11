@@ -1,14 +1,17 @@
 'use client'
 
+import { updateCard } from "@/actions/card/update-card"
 import FormSubmit from "@/components/form/form-submit"
 import FormTextarea from "@/components/form/form-textarea"
 import { Button } from "@/components/ui/button"
 import { Skeleton } from "@/components/ui/skeleton"
+import { useAction } from "@/hooks/use-action"
 import { CardWithList } from "@/types"
 import { useQueryClient } from "@tanstack/react-query"
 import { AlignLeft } from "lucide-react"
 import { useParams } from "next/navigation"
 import { ElementRef, useRef, useState } from "react"
+import { toast } from "sonner"
 import { useEventListener, useOnClickOutside } from "usehooks-ts"
 
 type Props = {
@@ -43,11 +46,23 @@ const Description = ({ data }: Props) => {
     useEventListener("keydown", onKeyDown)
     useOnClickOutside(formRef, disableEditing)
 
+    const { execute, fieldErrors } = useAction(updateCard, {
+        onSuccess: (data) => {
+            queryClient.invalidateQueries({
+                queryKey: ['card', data.id]
+            })
+            toast.success(`Card "${data.title}" updated`)
+        },
+        onError: (error) => {
+            toast.error(error)
+        }
+    })
+
     const onSubmit = (formData: FormData) => {
         const description = formData.get('description') as string
         const boardId = id as string
 
-        // TODO: Execute
+        execute({ id: data.id, title: data.title, description, boardId })
     }
 
     return (
@@ -58,12 +73,12 @@ const Description = ({ data }: Props) => {
                 {
                     isEditing
                         ? (
-                            <form ref={formRef} className="space-y-2">
+                            <form ref={formRef} className="space-y-2" action={onSubmit}>
                                 <FormTextarea
                                     id={"description"}
                                     className={"w-full mt-2"}
                                     placeholder="Add a more detailed description"
-                                    defaultValue={data.description || undefined} errors={undefined} />
+                                    defaultValue={data.description || undefined} errors={fieldErrors} />
                                 <div className="flex items-center gap-x-2">
                                     <FormSubmit>
                                         Save
