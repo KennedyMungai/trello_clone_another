@@ -1,12 +1,15 @@
 'use client'
 
+import { updateCard } from "@/actions/card/update-card"
 import { FormInput } from "@/components/form/form-input"
 import { Skeleton } from "@/components/ui/skeleton"
+import { useAction } from "@/hooks/use-action"
 import { CardWithList } from "@/types"
 import { useQueryClient } from "@tanstack/react-query"
 import { Layout } from "lucide-react"
 import { useParams } from "next/navigation"
 import { ElementRef, useRef, useState } from "react"
+import { toast } from "sonner"
 
 type Props = {
     data: CardWithList
@@ -17,6 +20,21 @@ const Header = ({ data }: Props) => {
 
     const queryClient = useQueryClient()
 
+    const { execute, fieldErrors } = useAction(updateCard, {
+        onSuccess: (data) => {
+            queryClient.invalidateQueries({
+                queryKey: ['card', data.id]
+            })
+
+            toast.success(`Renamed to "${data.title}"`)
+
+            setTitle(data.title)
+        },
+        onError: (error) => {
+            toast.error(error)
+        }
+    })
+
     const { id } = useParams()
 
     const inputRef = useRef<ElementRef<"input">>(null)
@@ -26,7 +44,12 @@ const Header = ({ data }: Props) => {
     }
 
     const onSubmit = (formData: FormData) => {
-        console.log(formData.get('title')) as string
+        const title = formData.get('title') as string
+        const boardId = id as string
+
+        if (title === data.title) return
+
+        execute({ title, boardId, id: data.id })
     }
 
     return (
@@ -40,6 +63,7 @@ const Header = ({ data }: Props) => {
                         onBlur={onBlur}
                         ref={inputRef}
                         className="font-semibold text-xl px-1 text-neutral-700 bg-transparent border-transparent relative -left-1.5 w-[95%] focus-visible:bg-white focus-visible:border-input mb-0.5 truncate"
+                        errors={fieldErrors}
                     />
                 </form>
                 <p className='text-sm text-muted-foreground'>
