@@ -20,7 +20,11 @@ const CardModal = (props: Props) => {
     return (
         <Dialog open={isOpen} onOpenChange={onClose}>
             <DialogContent>
-                <Header data={cardData} />
+                {
+                    cardData
+                        ? (<Header data={cardData} />)
+                        : <Header.Skeleton />
+                }
             </DialogContent>
         </Dialog>
     )

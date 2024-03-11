@@ -11,7 +11,7 @@ type Props = {
 }
 
 const Header = ({ data }: Props) => {
-    const [title, setTitle] = useState(data?.title)
+    const [title, setTitle] = useState(data.title)
 
     return (
         <div className="flex items-start gap-x-3 mb-6 w-full">
