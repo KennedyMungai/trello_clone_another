@@ -20,7 +20,7 @@ const CardModal = (props: Props) => {
     return (
         <Dialog open={isOpen} onOpenChange={onClose}>
             <DialogContent>
-                <Header />
+                <Header data={cardData} />
             </DialogContent>
         </Dialog>
     )
