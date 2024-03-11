@@ -62,7 +62,7 @@ const Description = ({ data }: Props) => {
         const description = formData.get('description') as string
         const boardId = id as string
 
-        execute({ id: data.id, title: data.title, description, boardId })
+        execute({ id: data.id, description, boardId })
     }
 
     return (
