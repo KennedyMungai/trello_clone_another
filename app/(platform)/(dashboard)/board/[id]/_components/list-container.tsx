@@ -142,6 +142,7 @@ const ListContainer = ({ boardId, data }: Props) => {
 			}
 		}
 	}
+	
 
 	return (
 		<DragDropContext onDragEnd={onDragEnd}>
